@@ -150,7 +150,7 @@ if (isGetCookie = typeof $request !== `undefined`) {
 // 获取签到数据
 function GetCookie() {
   if ($request && $request.url.indexOf("A3341A039") > -1) {
-    console.log($request.headers['MSPS_ENTITY']['Mblph_No'])
+    console.log($request.headers)
     if (bodyStr.indexOf('STS_TRACE_ID') == -1) {
       bodyStr = '';
       $.setdata(bodyStr, body_key);
