@@ -150,8 +150,7 @@ if (isGetCookie = typeof $request !== `undefined`) {
 // 获取签到数据
 function GetCookie() {
   if ($request && $request.url.indexOf("A3341A039") > -1) {
-    $.header = JSON.parse($request.header);
-    console.log($request.header)
+    console.log($request['headers'])
     if (bodyStr.indexOf('STS_TRACE_ID') == -1) {
       bodyStr = '';
       $.setdata(bodyStr, body_key);
