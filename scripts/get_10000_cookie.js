@@ -1,33 +1,6 @@
-/*
-脚本名称：中国电信 Cookie
-更新时间：2022-11-11
-登录入口：http://u3v.cn/5uwtIP
-重写订阅（QX）：https://raw.githubusercontent.com/FoKit/Scripts/main/rewrite/get_10000_cookie.conf
-重写订阅（Surge）：https://raw.githubusercontent.com/FoKit/Scripts/main/rewrite/get_10000_cookie.sgmodule
-BoxJs 订阅：https://raw.githubusercontent.com/FoKit/Scripts/main/boxjs/fokit.boxjs.json
-
-================Quantumult X配置=================
-[rewrite_local]
-^https:\/\/(e\.189\.cn\/store\/user|open\.e\.189\.cn\/api\/logbox\/oauth2\/loginSubmit\.do) url script-request-header https://raw.githubusercontent.com/FoKit/Scripts/main/scripts/get_10000_cookie.js
-[MITM]
-hostname = e.189.cn, open.e.189.cn
-====================Surge配置====================
-[Script]
-中国电信 Cookie = type=http-request,pattern=^https:\/\/(e\.189\.cn\/store\/user|open\.e\.189\.cn\/api\/logbox\/oauth2\/loginSubmit\.do),requires-body=0,max-size=0,timeout=1000,script-path=https://raw.githubusercontent.com/FoKit/Scripts/main/scripts/get_10000_cookie.js,script-update-interval=0
-[MITM]
-hostname = %APPEND% e.189.cn, open.e.189.cn
-====================Loon配置=====================
-[Script]
-http-request ^https:\/\/(e\.189\.cn\/store\/user|open\.e\.189\.cn\/api\/logbox\/oauth2\/loginSubmit\.do) tag=中国电信 Cookie, script-path=https://raw.githubusercontent.com/FoKit/Scripts/main/scripts/get_10000_cookie.js,requires-body=1
-[MITM]
-hostname = e.189.cn, open.e.189.cn
-*/
-
-const $ = new Env('中国电信 Cookie');
-$.boxjs_key_1 = 'china_telecom_cookie';
-$.boxjs_key_2 = 'china_telecom_login_url';
+const $ = new Env('建行生活 Cookie');
+$.boxjs_key_1 = 'jhsh_cookie';
 $.boxjs_data_1 = $.getdata($.boxjs_key_1);
-$.boxjs_data_2 = $.getdata($.boxjs_key_2);
 
 !(async () => {
   if (isGetCookie = typeof $request !== `undefined`) {
@@ -35,28 +8,18 @@ $.boxjs_data_2 = $.getdata($.boxjs_key_2);
   }
 
   // 获取 Cookie / Login_url
-  function GetCookie() {
-    if ($request && $request.url.indexOf("https://e.189.cn/store/user/") > -1 && $request.headers) {
-      if ($request['headers']['Cookie'] || $request['headers']['cookie']) {
+function GetCookie() {
+    if ($request && $request.url.indexOf("https://yunbusiness.ccb.com/clp_coupon/txCtrl?txcode=A3341A039") > -1 && $request.headers) {
+      if ($request['headers']['skey'] || $request['headers']['skey']) {
         $.cookie = $request['headers']['Cookie'] || $request['headers']['cookie'];
-        $.china_telecom_cookie = $.cookie.match(/(LT=.+?;)/)[1];
-        $.china_telecom_cookie += $.cookie.match(/(CZSSON=.+?;)/)[1];
-        if ($.china_telecom_cookie && $.china_telecom_cookie !== $.boxjs_data_1) {
-          $.setdata($.china_telecom_cookie, $.boxjs_key_1);
-          $.msg(`🎉 Cookie 更新成功。\n${$.china_telecom_cookie}`);
+        if ($.cookie !== $.boxjs_data_1) {
+          $.setdata($.cookie, $.boxjs_key_1);
+          $.msg(`🎉 Cookie 更新成功。\n${$.jhsh_cookie}`);
         } else {
-          console.log(`‼️ 无需更新 Cookie。\n${$.china_telecom_cookie}`);
+          console.log(`‼️ 无需更新 Cookie。\n${$.jhsh_cookie}`);
         }
       } else {
         $.msg(`${$.name} 获取失败，未找到 Cookie。`);
-      }
-    } else if ($request && $request.url.indexOf("loginSubmit.do") > -1) {
-      $.china_telecom_login_url = $request.url;
-      if ($.china_telecom_login_url && $.china_telecom_login_url !== $.boxjs_data_2) {
-        $.setdata($.china_telecom_login_url, $.boxjs_key_2);
-        $.msg(`🎉 Login_url 更新成功。\n${$.china_telecom_login_url}`);
-      } else {
-        console.log(`‼️ 无需更新 Login_url。\n${$.china_telecom_login_url}`);
       }
     }
   }
