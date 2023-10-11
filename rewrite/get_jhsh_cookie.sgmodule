@@ -1,10 +1,6 @@
-#!name=建行生活
-#!desc=建行生活APP -> 首页 -> 会员有礼 -> 签到 手动签到一次即可获取 Cookie
+# 获取建行生活SKEY
+# 登录入口：http://u3v.cn/5uwtIP
 
-[MITM]
-hostname = %APPEND% yunbusiness.ccb.com
+^https:\/\/(yunbusiness\.ccb\.com\/clp_coupon\/txCtrl\?txcode\=A3341A039) url script-request-header https://raw.githubusercontent.com/FoKit/Scripts/main/scripts/get_10000_cookie.js
 
-[Script]
-获取数据 = type=http-request,pattern=^https:\/\/yunbusiness\.ccb\.com\/clp_coupon\/txCtrl\?txcode=A3341A039,script-request-header,script-path=https://raw.githubusercontent.com/sunhao0112/Scripts/main/scripts/jhsh_checkIn.js
-
-定时任务 = type=cron,cronexp=17 7 * * *,timeout=60,script-path=https://raw.githubusercontent.com/sunhao0112/Scripts/main/scripts/jhsh_checkIn.js,script-update-interval=0
+hostname = e.189.cn, open.e.189.cn
