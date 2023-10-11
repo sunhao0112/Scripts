@@ -1,6 +1,6 @@
 # 获取建行生活SKEY
-# 登录入口：http://u3v.cn/5uwtIP
+# 登录入口：yunbusiness.ccb.com
 
 ^https:\/\/(yunbusiness\.ccb\.com\/clp_coupon\/txCtrl\?txcode\=A3341A039) url script-request-header https://raw.githubusercontent.com/FoKit/Scripts/main/scripts/get_10000_cookie.js
 
-hostname = e.189.cn, open.e.189.cn
+hostname = yunbusiness.ccb.com
