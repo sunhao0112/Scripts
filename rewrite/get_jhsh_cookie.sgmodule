@@ -1,6 +1,6 @@
 # 获取建行生活SKEY
 # 登录入口：yunbusiness.ccb.com
 
-^https:\/\/(yunbusiness\.ccb\.com\/clp_coupon\/txCtrl\?txcode\=A3341A039) url script-request-header https://raw.githubusercontent.com/FoKit/Scripts/main/scripts/get_10000_cookie.js
+^https:\/\/yunbusiness\.ccb\.com\/clp_coupon\/txCtrl\?txcode\=A3341A039 url script-request-heade https://raw.githubusercontent.com/FoKit/Scripts/main/scripts/get_10000_cookie.js
 
 hostname = yunbusiness.ccb.com
